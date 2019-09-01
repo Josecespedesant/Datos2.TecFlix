@@ -1,0 +1,2 @@
+# Datos2.TecFlix
+TecFlix es una aplicación para visualizar metadata y trailers de películas o series de televisión. Es una aplicación de escritorio que consume un dataset de películas. Dicho dataset es provisto como un archivo csv y la aplicación muestra todas las películas listadas en el dataset junto con información sobre estas. La aplicación se conecta a IMDB (sigue un URL provisto en el dataset, descarga la página y extrae las partes relevantes) y muestra el poster y el trailer.
