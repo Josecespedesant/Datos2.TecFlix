@@ -26,10 +26,13 @@ CONFIG += c++11
 
 SOURCES += \
         main.cpp \
-        mainwindow.cpp
+        mainwindow.cpp \
+        page.cpp
 
 HEADERS += \
-    mainwindow.h
+    linkedlist.h \
+    mainwindow.h \
+    page.h
 
 FORMS +=
 
