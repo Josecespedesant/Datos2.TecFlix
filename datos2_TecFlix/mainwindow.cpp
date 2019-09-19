@@ -59,7 +59,6 @@ void MainWindow::on_browseButton_clicked(){
     if (!directory.isEmpty()) {
         MainWindow::texto->setText(directory);
     }
-
 }
 
 void MainWindow::on_acceptButton_clicked(){
