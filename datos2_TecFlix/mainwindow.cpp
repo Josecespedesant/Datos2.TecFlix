@@ -1,11 +1,13 @@
 #include "mainwindow.h"
 #include <iostream>
-#include "page.h"
+#include "parseador.h"
 #include<fstream>
 #include <stdio.h>
 #include <string.h>
 #include <string>
 #include <sstream>
+
+#include "movies.h"
 
 #include "linkedlist.h"
 
@@ -76,15 +78,19 @@ void MainWindow::on_acceptButton_clicked(){
             columns->addLast(token);
         }
 
-        //columns->print();
 
         numCol = columns->getSize();
 
         posLink = columns->getPosByElem("movie_imdb_link");
 
-        close();
-        Page *pag = new Page(nullptr, posLink, directory.toStdString());
-        pag->show();
+
+
+        parseador *p = new parseador(NULL, posLink, directory.toStdString());
+
+        //movies *m = new movies;
+        //m->show();
+
+        hide();
 
        }
 

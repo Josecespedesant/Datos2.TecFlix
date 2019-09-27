@@ -1,4 +1,4 @@
-#include "page.h"
+#include "parser.h"
 #include <iostream>
 #include<fstream>
 #include <stdio.h>
@@ -8,6 +8,8 @@
 #include "linkedlist.h"
 #include "curl/curl.h"
 #include <QXmlQuery>
+#include <QtWebEngine/QtWebEngine>
+#include <QWebEnginePage>
 
 
 static size_t WriteCallBack(void *contents, size_t size, size_t nmemb, void *userp){
@@ -15,7 +17,7 @@ static size_t WriteCallBack(void *contents, size_t size, size_t nmemb, void *use
     return size * nmemb;
 }
 
-Page::Page(QWidget *parent, int linkPos, std::string directory)
+Parser::Parser(int linkPos, std::string directory)
 {
     std::ifstream ifile(directory);
     std::string line;
@@ -35,10 +37,13 @@ Page::Page(QWidget *parent, int linkPos, std::string directory)
 
     std::string link = movieInfo->getByPos(linkPos);
 
+    QUrl *url = new QUrl(link.c_str());
+
     //Cambia el enlace a https si es necesario
     if(link[4]!='s'){
       link.insert(4, "s");
     }
+
 
 
     //Tomado de https://gist.github.com/alghanmi/c5d7b761b2c9ab199157
@@ -61,55 +66,15 @@ Page::Page(QWidget *parent, int linkPos, std::string directory)
         curl_easy_cleanup(curl);
       }
 
+    QString qstr = QString::fromStdString(html);
 
-    std::cout << html<< std::endl;
+    QWebEnginePage * page = new QWebEnginePage();
 
-
-
-    setWindowTitle("TecFlix");
-    setWindowIcon(QIcon(":/icons/icon.png"));
-    int wdth = 700;
-    int hght = 700;
-    setFixedSize(wdth, hght);
+    page->setHtml(link.c_str());
 
 
 
-    //Define el boton de arriba y le añade una acción al ser presionado
-    upButton = new QPushButton(tr("&Up"), this);
-    upButton->setAttribute(Qt::WA_TranslucentBackground, true);
-    upButton->setMaximumWidth(150);
-    connect(upButton,  SIGNAL (released()), this, SLOT (on_upButton_clicked()));
+//    std::cout << html <<std::endl;
 
-
-    //Define el boton de abajo y le añade una acción al ser presionado
-    downButton = new QPushButton(tr("&Down"), this);
-    downButton->setAttribute(Qt::WA_TranslucentBackground, true);
-    downButton->setMaximumWidth(150);
-    connect(downButton,  SIGNAL (released()), this, SLOT (on_downButton_clicked()));
-
-    mainLayout = new QGridLayout(this);
-    mainLayout->setMargin(0);
-
-    mainLayout->addWidget(upButton,0,1);
-    mainLayout->addWidget(downButton,5,1);
-
-    int i=1;
-    int j=0;
-    while(i!=4){
-        while(j!=3){
-            mainLayout->addWidget(new QPushButton("A"),i,j);
-            j++;
-        }
-        j=0;
-        i++;
-    }
-
-}
-
-void Page::on_upButton_clicked(){
-
-}
-
-void Page::on_downButton_clicked(){
 
 }

@@ -13,6 +13,7 @@
 #include "QDir"
 #include "QFileDialog"
 #include "linkedlist.h"
+#include "movies.h"
 
 /*!
  * Clase de la primera ventana donde permite buscar el archivo csv
@@ -29,6 +30,7 @@ public:
      */
     MainWindow(QWidget *parent = nullptr);
 
+
 private slots:
     /*!
      * Abre el buscador de archivos al presionar el boton de buscar
@@ -39,6 +41,7 @@ private slots:
      * Una vez se selecciona el archivo se presiona este boton para aceptar
      */
     void on_acceptButton_clicked();
+
 
 private:
     QGridLayout *mainLayout;

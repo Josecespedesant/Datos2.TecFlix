@@ -34,6 +34,7 @@ public:
         }
         free(first);
     }
+
     void addLast(T data){
         nodePtr n = new node;
         n->index = size;

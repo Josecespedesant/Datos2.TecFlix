@@ -6,6 +6,7 @@
 
 QT       += core gui
 QT       += xmlpatterns
+QT       += webenginewidgets
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -27,19 +28,21 @@ CONFIG += c++11
 
 LIBS += -lcurl
 
-
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
-        page.cpp
+        movies.cpp \
+        parseador.cpp
 
 HEADERS += \
+    doublelinkedlist.h \
     linkedlist.h \
     mainwindow.h \
-    page.h
+    movies.h \
+    parseador.h
 
 FORMS += \
-    mainwindow.ui
+    movies.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
