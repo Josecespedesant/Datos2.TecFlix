@@ -110,6 +110,9 @@ public:
         size++;
     }
 
+    /*!
+     * \brief Borra el primer elemento
+     */
 
     void deleteFirst(){
         if (isEmpty()){
@@ -131,6 +134,9 @@ public:
         size--;
     }
 
+    /*!
+     * \brief Borra el ultimo elemento
+     */
     void deleteLast(){
         if(isEmpty()){
             return;
@@ -153,10 +159,17 @@ public:
         }
     }
 
+    /*!
+     * \brief Devuelve el tamaño de la lista
+     * \return
+     */
     int getSize(){
         return size;
     }
 
+    /*!
+     * \brief Imprime la lista
+     */
     void print(){
         curr = first;
         while(curr!=nullptr){
@@ -165,6 +178,9 @@ public:
         }
     }
 
+    /*!
+     * \brief Borra la lista
+     */
     void clear(){
         curr = first;
         while(curr != NULL){
@@ -174,6 +190,11 @@ public:
         }
     }
 
+    /*!
+     * \brief Obtiene el elemento por posicion
+     * \param pos
+     * \return
+     */
     T getByPos(int pos) {
         if(isEmpty()){
             std::cout<<"Lista vacía";

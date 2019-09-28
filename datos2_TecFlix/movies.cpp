@@ -3,6 +3,8 @@
 #include "QBitmap"
 #include <QWebEngineView>
 #include <QNetworkReply>
+#include <sys/time.h>
+#include <sys/resource.h>
 #include "iostream"
 
 static size_t WriteCallBack(void *contents, size_t size, size_t nmemb, void *userp){
@@ -14,6 +16,7 @@ movies::movies(QWidget *parent, std::string *link, DoubleLinkedList<movies *> *p
     QDialog(parent),
     ui(new Ui::movies)
 {
+
 
     this->paginas = paginas;
     setWindowIcon(QIcon(":/icons/icon.png"));
@@ -35,6 +38,8 @@ movies::movies(QWidget *parent, std::string *link, DoubleLinkedList<movies *> *p
     LoadAvatar(link[6], *ui->label31);
     LoadAvatar(link[7], *ui->label32);
     LoadAvatar(link[8], *ui->label33);
+
+    int getrusage(int who, struct rusage *usage);
 
 
 }

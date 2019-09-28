@@ -2,6 +2,10 @@
 #define LINKEDLIST_H
 #include <iostream>
 template <class T>
+
+/*!
+ * \brief Declaración de la clase LinkedList
+ */
 class LinkedList
 {
 private:
@@ -17,12 +21,19 @@ private:
     int size;
 
 public:
+    /*!
+     * \brief Constructor de la clase LinkedList
+     */
     LinkedList(){
         first = NULL;
         curr = NULL;
         temp = NULL;
         size = 0;
     }
+
+    /*!
+     * \brief Destructor de la clase LinkedList
+     */
     ~LinkedList(){
         curr = first;
         nodePtr next;
@@ -35,6 +46,10 @@ public:
         free(first);
     }
 
+    /*!
+     * \brief Añade al final
+     * \param data
+     */
     void addLast(T data){
         nodePtr n = new node;
         n->index = size;
@@ -52,6 +67,11 @@ public:
         size++;
     }
 
+    /*!
+     * \brief Obtiene la posicion dado un elemento
+     * \param elem
+     * \return
+     */
     int getPosByElem(T elem){
         if(!isEmpty()){
             curr = first;
@@ -66,6 +86,11 @@ public:
         }
     }
 
+    /*!
+     * \brief Devuelve elemento dada posicíon
+     * \param pos
+     * \return
+     */
     T getByPos(int pos) {
         if(first == NULL){
             std::cout<<"Lista vacía";
@@ -83,6 +108,9 @@ public:
         return NULL;
     }
 
+    /*!
+     * \brief Borra el ultimo nodo
+     */
     void deleteLast(){
         if(isEmpty()){
             return;
@@ -104,6 +132,10 @@ public:
             size--;
         }
     }
+    /*!
+     * \brief Inserta al inicio
+     * \param data
+     */
     void addFirst(T data){
         nodePtr n = new node;
         n->index = 0;
@@ -119,6 +151,9 @@ public:
 
         size++;
     }
+    /*!
+     * \brief Borra el primer nodo
+     */
     void deleteFirst(){
         if (isEmpty()){
             return;
@@ -135,6 +170,11 @@ public:
 
         size--;
     }
+
+    /*!
+     * \brief Borra un nodo dada la data
+     * \param data
+     */
     void deleteNode(T data){
         nodePtr delPtr = NULL;
         temp = first;
@@ -161,12 +201,23 @@ public:
             size--;
         }
     }
+    /*!
+     * \brief Devuelve el tamaño
+     * \return
+     */
     int getSize(){
         return size;
     }
+    /*!
+     * \brief Devuelve si la lista esta vacía
+     * \return
+     */
     bool isEmpty(){
         return first == NULL;
     }
+    /*!
+     * \brief Imprime la lista
+     */
     void print(){
         curr = first;
         while(curr!=nullptr){
@@ -175,6 +226,9 @@ public:
         }
     }
 
+    /*!
+     * \brief Borra la lista
+     */
     void clear(){
         curr = first;
         while(curr != NULL){

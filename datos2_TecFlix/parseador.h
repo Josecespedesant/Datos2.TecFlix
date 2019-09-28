@@ -15,7 +15,9 @@
 #include <QWebEnginePage>
 #include <QWebEngineSettings>
 
-
+/*!
+ * \brief Declaración de la clase parseador
+ */
 class parseador : QObject
 {
 
@@ -23,6 +25,12 @@ private:
     QWebEnginePage * page;
 
 public:
+    /*!
+     * \brief Constructor de la clase parseador
+     * \param parent
+     * \param linkPos
+     * \param directory
+     */
     parseador(QObject *parent = nullptr, int linkPos = NULL, std::string directory = NULL);
 };
 
