@@ -10,11 +10,12 @@ static size_t WriteCallBack(void *contents, size_t size, size_t nmemb, void *use
     return size * nmemb;
 }
 
-movies::movies(QWidget *parent, std::string *link) :
+movies::movies(QWidget *parent, std::string *link, DoubleLinkedList<movies *> *paginas) :
     QDialog(parent),
     ui(new Ui::movies)
 {
 
+    this->paginas = paginas;
     setWindowIcon(QIcon(":/icons/icon.png"));
 
     QPalette pal = palette();
@@ -100,4 +101,25 @@ void movies::on_pushButton_4_clicked()
     ui->label32->resize(w,h);
     ui->label33->resize(w,h);
 
+}
+
+void movies::on_pushButton_2_clicked()
+{
+    paginas->getByPos(1)->show();
+    paginas->addLast(paginas->getByPos(0));
+    hide();
+}
+
+void movies::on_pushButton_clicked()
+{
+    if(paginas->getSize()!=2){
+    paginas->getByPos(0)->show();
+    paginas->deleteFirst();
+    hide();
+    return;
+    }
+    else{
+        paginas->getByPos(0)->show();
+        hide();
+    }
 }

@@ -24,7 +24,6 @@ private:
 
 public:
     parseador(QObject *parent = nullptr, int linkPos = NULL, std::string directory = NULL);
-    std::string giveMeTextBetween(QString s, QString before, QString after);
 };
 
 #endif // PARSEADOR_H

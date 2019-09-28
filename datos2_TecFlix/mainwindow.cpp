@@ -83,15 +83,12 @@ void MainWindow::on_acceptButton_clicked(){
 
         posLink = columns->getPosByElem("movie_imdb_link");
 
-
+        hide();
 
         parseador *p = new parseador(NULL, posLink, directory.toStdString());
 
         //movies *m = new movies;
         //m->show();
-
-        hide();
-
        }
 
         else{

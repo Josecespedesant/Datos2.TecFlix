@@ -3,6 +3,12 @@
 
 #include <iostream>
 template <class T>
+
+
+/*!
+ * \brief Declaración de la clase DoubleLinkedList
+ */
+
 class DoubleLinkedList
 {
 private:
@@ -20,6 +26,9 @@ private:
 
 
 public:
+    /*!
+     * \brief Constructor de la clase DoubleLinkedList
+     */
     DoubleLinkedList(){
         first = NULL;
         curr = NULL;
@@ -27,6 +36,10 @@ public:
         size = 0;
     }
 
+
+    /*!
+     * \brief Destructor de la clase DoubleLinkedList
+     */
     ~DoubleLinkedList(){
         curr = first;
         nodePtr next;
@@ -39,10 +52,18 @@ public:
         free(first);
     }
 
+
+    /*!
+     * \brief Metodo que devuelve si la lista esta vacia
+     */
     bool isEmpty(){
         return first == NULL;
     }
 
+    /*!
+     * \brief Metodo que inserta la información al final
+     * \param data
+     */
     void addLast(T data){
         nodePtr n = new node;
         n->index = size;
@@ -67,6 +88,10 @@ public:
         return;
     }
 
+    /*!
+     * \brief Metodo que inserta la informacion al inicio
+     * \param data
+     */
     void addFirst(T data){
         nodePtr n = new node;
 
@@ -84,6 +109,7 @@ public:
         }
         size++;
     }
+
 
     void deleteFirst(){
         if (isEmpty()){
@@ -148,7 +174,7 @@ public:
         }
     }
 
-    node getByPos(int pos) {
+    T getByPos(int pos) {
         if(isEmpty()){
             std::cout<<"Lista vacía";
             return NULL;
@@ -157,7 +183,7 @@ public:
             nodePtr aux = first;
             while(aux != NULL){
                 if(aux->index == pos){
-                    return *aux;
+                    return aux->data;
                 }
                 aux = aux->next;
             }
